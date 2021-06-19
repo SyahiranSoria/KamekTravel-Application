@@ -1,0 +1,33 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/places/tabs/categories"></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{id}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid>
+  <ion-row>
+    <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+      <ion-list>
+        <ion-item *ngFor="let placeKamek of releventPlaces"
+          [routerLink]="[placeKamek.poi_id]"
+          detail
+        >
+          <ion-thumbnail slot="start" class="thumbnail">
+            <ion-img [src] = "placeKamek.poi_imageUrl" class="border"></ion-img>
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ placeKamek.poi_title }}</h2>
+            <p>{{ placeKamek.poi_description }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+</ion-content> -->

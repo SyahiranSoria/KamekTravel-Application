@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onCancel()">{{ closeButtonTextDP }}</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="map-container">
+    <div class="map-frame">
+      <div class="map" #map></div>
+      <ion-icon id="refreshButton" color="primary" (click)="findMe()" name="person-circle-outline"></ion-icon>
+      <div><ion-button disabled id="refresh" color="primary" >{{this.distance}}KM</ion-button></div>
+
+
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "KamekTravel Application",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

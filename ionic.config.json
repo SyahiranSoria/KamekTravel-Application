@@ -1,0 +1,7 @@
+{
+  "name": "KamekTravel Application",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,293 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/add-places">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>New Offer</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onCreateOffer()" [disabled]="!formPD.valid || !formPD.get('image').value">
+        <ion-icon name="checkmark" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formPD">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Title</ion-label>
+            <ion-input type="text" autocomplete autocorrect formControlName="title"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Short Description</ion-label>
+            <ion-textarea rows="3" formControlName="description"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Address</ion-label>
+            <ion-textarea rows="2" formControlName="address"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item *ngIf = "!formPD.get('description').valid && formPD.get('description').touched">
+            <p>This should be 180 characters</p>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Phone Number</ion-label>
+            <ion-input type="number" formControlName="phoneNum"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Category</ion-label>
+            <ion-select class="custom-options" formControlName="category">
+              <ion-select-option value="Museums">Museums</ion-select-option>
+              <ion-select-option value="Forts">Forts</ion-select-option>
+              <ion-select-option value="National Parks">National Parks</ion-select-option>
+              <ion-select-option value="Places of Worship">Places of Worship</ion-select-option>
+              <ion-select-option value="Heritage Building">Heritage Building</ion-select-option>
+              <ion-select-option value="Events & Festival">Events & Festival</ion-select-option>
+              <ion-select-option value="Places to Eat">Places to Eat</ion-select-option>
+              <ion-select-option value="Others">Others</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">First Keyword</ion-label>
+            <ion-select class="custom-options" formControlName="keyword1">
+              <ion-select-option value="Culture">Culture</ion-select-option>
+              <ion-select-option value="Nature">Nature</ion-select-option>
+              <ion-select-option value="Adventure">Adventure</ion-select-option>
+              <ion-select-option value="Mi Kolok">Mi Kolok</ion-select-option>
+              <ion-select-option value="Mi Laksa Sarawak">Mi Laksa Sarawak</ion-select-option>
+              <ion-select-option value="Ayam Pansuh">Ayam Pansuh</ion-select-option>
+              <ion-select-option value="Shell Out">Shell Out</ion-select-option>
+              <ion-select-option value="Steamboat">Steamboat</ion-select-option>
+              <ion-select-option value="Festival">Festival</ion-select-option>
+              <ion-select-option value="Historal">Historal</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Second Keyword</ion-label>
+            <ion-select class="custom-options" formControlName="keyword2">
+              <ion-select-option value="Culture">Culture</ion-select-option>
+              <ion-select-option value="Nature">Nature</ion-select-option>
+              <ion-select-option value="Adventure">Adventure</ion-select-option>
+              <ion-select-option value="Mi Kolok">Mi Kolok</ion-select-option>
+              <ion-select-option value="Mi Laksa Sarawak">Mi Laksa Sarawak</ion-select-option>
+              <ion-select-option value="Ayam Pansuh">Ayam Pansuh</ion-select-option>
+              <ion-select-option value="Shell Out">Shell Out</ion-select-option>
+              <ion-select-option value="Steamboat">Steamboat</ion-select-option>
+              <ion-select-option value="Festival">Festival</ion-select-option>
+              <ion-select-option value="Historal">Historal</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Third Keyword</ion-label>
+            <ion-select class="custom-options" formControlName="keyword3">
+              <ion-select-option value="Culture">Culture</ion-select-option>
+              <ion-select-option value="Nature">Nature</ion-select-option>
+              <ion-select-option value="Adventure">Adventure</ion-select-option>
+              <ion-select-option value="Mi Kolok">Mi Kolok</ion-select-option>
+              <ion-select-option value="Mi Laksa Sarawak">Mi Laksa Sarawak</ion-select-option>
+              <ion-select-option value="Ayam Pansuh">Ayam Pansuh</ion-select-option>
+              <ion-select-option value="Shell Out">Shell Out</ion-select-option>
+              <ion-select-option value="Steamboat">Steamboat</ion-select-option>
+              <ion-select-option value="Festival">Festival</ion-select-option>
+              <ion-select-option value="Historal">Historal</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+
+
+
+      <ion-row class="ion-no-padding">
+          <ion-col class="ion-align-items-center ion-text-center">
+            <p>Sunday</p>
+          </ion-col>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">From</ion-label>
+            <ion-datetime displayFormat="h:mm a" formControlName="sundayFrom"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">To</ion-label>
+            <ion-datetime displayFormat="h:mm a" formControlName="sundayTo"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding">
+        <ion-col class="ion-align-items-center ion-text-center">
+          <p>Monday</p>
+        </ion-col>
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-item>
+          <ion-label position="floating">From</ion-label>
+          <ion-datetime displayFormat="h:mm a" formControlName="mondayFrom"></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-item>
+          <ion-label position="floating">To</ion-label>
+          <ion-datetime displayFormat="h:mm a" formControlName="mondayTo"></ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-no-padding">
+      <ion-col class="ion-align-items-center ion-text-center">
+        <p>Tuesday</p>
+      </ion-col>
+    <ion-col size-sm="6" offset-sm="3">
+      <ion-item>
+        <ion-label position="floating">From</ion-label>
+        <ion-datetime displayFormat="h:mm a" formControlName="tuesdayFrom"></ion-datetime>
+      </ion-item>
+    </ion-col>
+    <ion-col size-sm="6" offset-sm="3">
+      <ion-item>
+        <ion-label position="floating">To</ion-label>
+        <ion-datetime displayFormat="h:mm a" formControlName="tuesdayTo"></ion-datetime>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding">
+    <ion-col class="ion-align-items-center ion-text-center">
+      <p>Wednesday</p>
+    </ion-col>
+  <ion-col size-sm="6" offset-sm="3">
+    <ion-item>
+      <ion-label position="floating">From</ion-label>
+      <ion-datetime displayFormat="h:mm a" formControlName="wednesdayFrom"></ion-datetime>
+    </ion-item>
+  </ion-col>
+  <ion-col size-sm="6" offset-sm="3">
+    <ion-item>
+      <ion-label position="floating">To</ion-label>
+      <ion-datetime displayFormat="h:mm a" formControlName="wednesdayTo"></ion-datetime>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding">
+    <ion-col class="ion-align-items-center ion-text-center">
+      <p>Thursday</p>
+    </ion-col>
+  <ion-col size-sm="6" offset-sm="3">
+    <ion-item>
+      <ion-label position="floating">From</ion-label>
+      <ion-datetime displayFormat="h:mm a" formControlName="thursdayFrom"></ion-datetime>
+    </ion-item>
+  </ion-col>
+  <ion-col size-sm="6" offset-sm="3">
+    <ion-item>
+      <ion-label position="floating">To</ion-label>
+      <ion-datetime displayFormat="h:mm a" formControlName="thursdayTo"></ion-datetime>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding">
+    <ion-col class="ion-align-items-center ion-text-center">
+      <p>Friday</p>
+    </ion-col>
+  <ion-col size-sm="6" offset-sm="3">
+    <ion-item>
+      <ion-label position="floating">From</ion-label>
+      <ion-datetime displayFormat="h:mm a" formControlName="fridayFrom"></ion-datetime>
+    </ion-item>
+  </ion-col>
+  <ion-col size-sm="6" offset-sm="3">
+    <ion-item>
+      <ion-label position="floating">To</ion-label>
+      <ion-datetime displayFormat="h:mm a" formControlName="fridayTo"></ion-datetime>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding">
+    <ion-col class="ion-align-items-center ion-text-center">
+      <p>Saturday</p>
+    </ion-col>
+  <ion-col size-sm="6" offset-sm="3">
+    <ion-item>
+      <ion-label position="floating">From</ion-label>
+      <ion-datetime displayFormat="h:mm a" formControlName="saturdayFrom"></ion-datetime>
+    </ion-item>
+  </ion-col>
+  <ion-col size-sm="6" offset-sm="3">
+    <ion-item>
+      <ion-label position="floating">To</ion-label>
+      <ion-datetime displayFormat="h:mm a" formControlName="saturdayTo"></ion-datetime>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size-sm="6" offset-sm="3">
+      <ion-item>
+        <ion-label position="floating">Website Link</ion-label>
+        <ion-input type="text" autocomplete autocorrect formControlName="website"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <app-location-picker
+            (locationPick)="onLocationPicked($event)"
+            [showPreview] = "formPD.get('location').value"
+          ></app-location-picker>
+        </ion-col >
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+        <app-image-picker
+        (imagePick)="onImagePicked($event)"
+        [showPreview] = "formPD.get('image').value"
+        ></app-image-picker>
+        </ion-col >
+      </ion-row>
+    </ion-grid>
+
+  </form>
+</ion-content>

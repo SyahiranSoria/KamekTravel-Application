@@ -1,0 +1,23 @@
+<div class="picker">
+  <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>
+  <ion-item   *ngIf="showPreview" role="button" (click)="openWishlistModal()">
+    <ion-thumbnail slot="start">
+      <ion-img [src]="selectedImage"></ion-img>
+    </ion-thumbnail>
+    <ion-label >
+      <h3>{{ selectedTitle}}</h3>
+      <p>{{ selecteddesc }}</p>
+    </ion-label>
+  </ion-item>
+
+  <div class="ion-text-center">
+    <ion-button
+    color="primary"
+    (click)="openWishlistModal()"
+    *ngIf="!showPreview"
+    >
+    <ion-label>Add Wishlist</ion-label>
+    </ion-button>
+  </div>
+
+</div>

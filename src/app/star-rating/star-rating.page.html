@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Give Your Rate Here!</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="onCancel()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="App">
+          <div class="flex-container">
+            <ng-container *ngFor="let star of stars">
+              <app-staraaa [starId]="star" [rating]="hoverState || rating" (enter)="enter($event)"
+                (bigClick)="updateRating(star)">
+              </app-staraaa>
+            </ng-container>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

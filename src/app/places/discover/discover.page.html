@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <!-- <ion-button (click)="onOpenMenu()">
+        Open
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title>Discover Places</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <ion-segment (ionChange)="onFilterUpdate($event)" value="Recommendation">
+    <ion-segment-button value="Recommendation">Recommendation</ion-segment-button>
+    <ion-segment-button value="Preference">Preference</ion-segment-button>
+  </ion-segment>
+  <ion-grid *ngIf="isLoading">
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+        <ion-spinner color="primary"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="Keyword">
+
+    <ion-row class="horizontal-scroll">
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center" >
+        <ion-chip>
+          <ion-label >Nature</ion-label>
+          <ion-icon name="heart"></ion-icon>
+        </ion-chip>
+        <ion-chip>
+          <ion-label>Adventure</ion-label>
+          <ion-icon name="heart"></ion-icon>
+        </ion-chip>
+        <ion-chip>
+          <ion-label >Historical</ion-label>
+          <ion-icon name="heart"></ion-icon>
+        </ion-chip>
+        <ion-chip>
+          <ion-label>Mi Kolok</ion-label>
+          <ion-icon name="heart"></ion-icon>
+        </ion-chip>
+        <ion-chip>
+          <ion-label >Mi Laksa Sarawak</ion-label>
+          <ion-icon name="heart"></ion-icon>
+        </ion-chip>
+        <ion-chip>
+          <ion-label>Ayam Pansuh</ion-label>
+          <ion-icon name="heart"></ion-icon>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="!isLoading && releventPlaces.length > 0"> <!--show when releventplaces more then 0-->
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title> {{ releventPlaces[0].title }}</ion-card-title>
+            <ion-card-subtitle> <ion-icon name="call-outline"></ion-icon> Phone Number : +60{{ releventPlaces[0].phoneNumber }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-img [src] = "tunjokPlaces[0].imageUrl"></ion-img>
+          <ion-card-content>
+            {{ releventPlaces[0].description }}
+          </ion-card-content>
+          <div >
+            <ion-button fill="clear"
+            color="primary"
+            [routerLink]="[
+              '/',
+              'places',
+              'tabs',
+              'discover',
+              releventPlaces[0].id
+            ]"> More </ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+        <ion-list>
+          <ion-item *ngFor="let placeKamek of releventPlaces.slice(1)"
+            [routerLink]="[placeKamek.id]" detail
+          ><!--Other way of delcaring path for routing-->
+            <ion-thumbnail slot="start" class="thumbnail">
+              <ion-img [src] = "placeKamek.imageUrl" class="border"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{ placeKamek.title }}</h2>
+              <p>{{ placeKamek.description }}</p>
+              <ion-chip role="noButton">
+                <ion-label>{{placeKamek.category}}</ion-label>
+                <ion-icon name="heart"></ion-icon>
+              </ion-chip>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

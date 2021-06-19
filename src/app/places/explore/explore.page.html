@@ -1,0 +1,55 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Explore on Maps</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="map-frame">
+  <div class="map" #map>
+  </div>
+    </div>
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <!-- <ion-button (click)="onOpenMenu()">
+        Open
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title>Explore on Maps</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="isLoading">
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+        <ion-spinner color="primary">Loading....</ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-row>
+    <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+      <ion-list>
+        <ion-item *ngFor="let placeKamek of data" (click)="onShowFullMap(placeKamek.location.lat, placeKamek.location.lng, placeKamek.title)"
+        >
+        <ion-avatar item-left>
+          <ion-icon name="navigate-outline"></ion-icon>
+        </ion-avatar>
+          <ion-label>
+
+            <h2>{{ placeKamek.title }}</h2>
+            <h3>{{placeKamek.category}}</h3>
+            <p>{{ placeKamek.distance }} KM</p>
+
+
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "kamektravel",
+  "private_key_id": "6162d9d05b34b803e862a84f673ec3db08dd66b6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDfmmvnI8CFYIRM\nUppEkLKpAUJQQWjXHbysep4LPJfNt3rrc3IcxVcdkw0gqoojMZgUNsidoZRh7OC5\nSsksGhVkwUncJnj5fHMhotri9ZzgDYEtnE8wz49G7lbTa1FDeRiKwc1ZlXcgf0SK\nDUrgrAmd13ThZC0nqM4JwJtfHL3mJLs6vJXCiHar6MrJmQk8B3fRiTf0T+//GBjX\nKvp3zIn+Z50yF0OSryQvaIqkB5BExY1eWQAtQ0YGBhDQtXZNmszdyskGPy12YhqG\nP9ROkEroedyu1hrU5iMKKCCLqu7zgvGHPeU1rGBue4quKCr1ITn9viKQv02IMZ2P\nl1ptxtA/AgMBAAECggEACHysfsvxGT7mFp2GBHc3iMmm8jPhXlTfHe7Tg9qral/9\n9uTdXnExEsrLk0NV1esiehXwPGdvId5jUzUe+KEO0dGyU3xUWCfcmNi9FSM8bpak\nog4ORWyDZC5Utlaa8YQtpcqgWDefm2ipOdIyVt/Ax7BvW8S5IAm8tEsOuqf1H0CQ\nfbKopOUT/8e+7tVoGJC+TRe6M0zJMdOeWhSXFuxavmu6vS9hgRxgjD4WEnY4qQ4f\nb19dMBNJc6mTv8BKMNmFMs5hqDahulagLbbhl4tceB/6JDuedaxaDRmtkV3pbjzr\noo2XGT+KOA2ODsFRgSfb1rG8kA+FWPJLANFarzt8HQKBgQD1S1Y4LHgqDorBfuK+\nzTwHRWP72i3Gi7za2qRvck890P5x2K0+6gu/pEqASDjvhtAoFDHm45ISTKXAOi8i\n8M+gzQzom87DVUWrsjInpzg8kL6eYTgL14ICnx/5EUYJPujQAHzRdyICxu4y3j4U\niAspW9u7dA7KVdZ+yJF3ohUQRQKBgQDpXLsu9dqxEuwJVcq5/ry8kRUZNhN/RRBn\npXc+JJNN2N6G5oyT99fc48OzVuN0nVtikBqWpOCKOqJKyn4ZM438BauPxb7+8mcl\nrCr5OtNLebLhPy68k51Fx/CsIWAHmbSKqAYeADy4XTg4pgp6nbo23BMoaBDZmMr+\nWRLNLLmwswKBgFH6trsZaaOsroUSshdQokJP16WhenED3L9MGW7BxmgDhDZqUyRW\ntkx7TQbonFa5OLJcZX0kC3qgMTk4eO51iv7T6P+IqyavRhSm/oowIeRj/8EQ/tk+\nUk4r/lSQiFaotshlkVG0PiKtd4h6rEbSXOCauapBlHvdCk3fHHbeLan9AoGAKToC\nr6crfYD0Rinr6LQCL+YJriyJgUB4R3dJ+6aGh4g6t+ZfC30Lm7B5UGOXR3DNRjpj\nGB4EtSbqqP/hCx66hL2Ts5Chz3SPmG40IVetIHZdjcGVxibl8AAEmsRCrNUQujY4\n7m/oSkHdvtRGoabf0PVMRSUtZOPDaO/fjHPMUlUCgYBd2+4+P8WVDeTR6qKcEMiW\nLI4SPI+21axq59jq9U9NIuln2bzzztTn8Uw6hozyOcGci1uCLRPpjG37yq6vnaIa\nuK+MZ7a4X5E6Ce/WE11d+LWkx6yL3rseiq8glgKE3uFKApsTwCde+amvja1KWV2+\nZ4rWvAULfiPHfUXwXKt2EA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-ys70i@kamektravel.iam.gserviceaccount.com",
+  "client_id": "100378944517839234206",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ys70i%40kamektravel.iam.gserviceaccount.com"
+}

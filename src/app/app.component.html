@@ -1,0 +1,73 @@
+<ion-app>
+  <ion-menu side="start" contentId="main">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          KamekTravel Application
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+          <!-- <ion-menu-toggle>
+            <ion-item lines="none" routerLink="profile">
+              <ion-icon name="people-outline" slot="start"></ion-icon>
+              <ion-label>
+                Profile
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+          <ion-menu-toggle>
+          <ion-item lines="none" routerLink="/places/tabs/discover">
+            <ion-icon name="airplane-outline" slot="start"></ion-icon>
+              <ion-label>
+                Discover
+              </ion-label>
+          </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" routerLink="wishlist">
+              <ion-icon name="bookmarks-outline" slot="start"></ion-icon>
+              <ion-label>
+                Wishlist
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" routerLink="planner">
+              <ion-icon name="book-outline" slot="start"></ion-icon>
+              <ion-label>
+                Planner
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none" routerLink="feedback" >
+              <ion-icon name="mail-open-outline" slot="start"></ion-icon>
+              <ion-label>
+                Feedback
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle *ngIf="show">
+            <ion-item lines="none"  routerLink="add-places" >
+              <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+              <ion-label>
+                Add Places
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle>
+            <ion-item lines="none"  (click)="onLogout()" button>
+              <ion-icon name="exit" slot="start" ></ion-icon>
+              <ion-label>
+                Logout
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

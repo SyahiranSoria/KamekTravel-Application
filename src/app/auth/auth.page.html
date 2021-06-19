@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar  >
+    <ion-title> {{ isLogin ? 'Login' : 'Signup' }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #localreferenceformPD="ngForm" (ngSubmit)="onsubmit(localreferenceformPD)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">E-Mail</ion-label>
+              <ion-input
+                type="email"
+                ngModel
+                name="email"
+                required
+                email
+                #emailmesejtersembunyi="ngModel"
+              ></ion-input>
+            </ion-item>
+            <ion-item
+                *ngIf="!emailmesejtersembunyi.valid && emailmesejtersembunyi.touched"
+                lines="none"
+              >
+                <ion-label>
+                  Should be a valid email
+                </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input
+                type="password"
+                ngModel
+                name="password"
+                required
+                minlength="6"
+                #passwordmesejsembunyi="ngModel"
+              ></ion-input>
+            </ion-item>
+            <ion-item
+                  *ngIf="!passwordmesejsembunyi.valid && passwordmesejsembunyi.touched"
+                  lines="none"
+                >
+                  <ion-label>
+                    Password should be valid
+                  </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-button
+            type="button"
+            color="primary"
+            fill="clear"
+            expand="block"
+            (click)="onSwitchAuthMode()"
+            >Switch to {{ isLogin ? 'Signup' : 'Login' }} <!-- Refer to auth.page.ts file line 45-->
+          </ion-button>
+
+        <ion-button
+          type="submit"
+          color="primary"
+          expand="block"
+          [disabled]="!localreferenceformPD.valid"
+          > {{ isLogin ? 'Login' : 'Signup' }}
+        </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>

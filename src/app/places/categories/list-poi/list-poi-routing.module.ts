@@ -9,8 +9,12 @@ const routes: Routes = [
     component: ListPoiPage
   },
   {
-    path: ':poi_id',//'poi-details',
+    path: ':placeId',//'poi-details',
     loadChildren: () => import('./poi-details/poi-details.module').then( m => m.PoiDetailsPageModule)
+  },
+  {
+    path: 'wishlistadd',
+    loadChildren: () => import('./wishlistadd/wishlistadd.module').then( m => m.WishlistaddPageModule)
   }
 ];
 

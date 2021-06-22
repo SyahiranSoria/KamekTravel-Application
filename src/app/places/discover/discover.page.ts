@@ -22,6 +22,10 @@ export class DiscoverPage implements OnInit, OnDestroy {
   isLoading = false;
   private placesSubSitok : Subscription;
   Keyword = false;
+  id: string;
+  show = false;
+
+
 
 
   constructor(
@@ -33,7 +37,8 @@ export class DiscoverPage implements OnInit, OnDestroy {
     this.placesSubSitok = this.placesServicePD.places.subscribe(places => {
       this.tunjokPlaces = places;
       this.releventPlaces = this.tunjokPlaces;
-      this.listedLoadedPlace = this.releventPlaces.slice(1);
+      this.releventPlaces = this.tunjokPlaces.filter(place =>  place.rate >= 3.5 );
+      //this.listedLoadedPlace = this.releventPlaces.slice(1);
     });
   }
 
@@ -48,26 +53,26 @@ export class DiscoverPage implements OnInit, OnDestroy {
      this.MenuCtrlDiscoverPage.open();
    }
 
-  onFilterUpdate(event){
-    //console.log(event.detail);
-    this.authServicePD.userId.pipe(take(1)).subscribe(userId => {
-      if (event.detail.value === 'Recommendation')
-      {
-        this.Keyword = false;
-        this.releventPlaces = this.tunjokPlaces;
-        this.listedLoadedPlace = this.releventPlaces.slice(1);
-      } else {
-        this.Keyword = true;
-        // this.releventPlaces = this.tunjokPlaces.filter(place => place.userId !== userId);
-        // this.listedLoadedPlace = this.releventPlaces.slice(1);
-        //this.Keyword = false;
-        this.releventPlaces = this.tunjokPlaces;
-        this.listedLoadedPlace = this.releventPlaces.slice(1);
-      }
-    });
+   Keyword1(key){
+    this.id = key;
+    console.log(this.id);
+    this.releventPlaces = this.tunjokPlaces.filter(place => place.keyword1 == this.id || place.keyword2 == this.id || place.keyword3 == this.id );
+    this.listedLoadedPlace = this.releventPlaces.slice(1);
   }
 
-
+  onFilterUpdate(event){
+      if (event.detail.value === 'Recommendation')
+      {
+        this.show = true;
+        this.Keyword = false;
+        this.releventPlaces = this.tunjokPlaces.filter(place =>  place.rate >= 3.5 );
+        this.listedLoadedPlace = this.releventPlaces.slice(1);
+        console.log(this.listedLoadedPlace,'helo');
+      } else {
+        this.Keyword = true;
+        this.show = true;
+      }
+  }
 
   ngOnDestroy(){
     if(this.placesSubSitok){

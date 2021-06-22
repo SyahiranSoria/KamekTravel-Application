@@ -1,6 +1,4 @@
 import { WishlistItineray } from "src/app/wishlist/wishlist.model";
-
-
 export class Itinerary{ //this will be called in file places.service.ts
   constructor(
     public id: string,//id of places

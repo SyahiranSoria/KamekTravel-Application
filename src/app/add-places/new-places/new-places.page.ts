@@ -75,60 +75,60 @@ export class NewPlacesPage implements OnInit {
       }),
       sundayFrom: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       sundayTo: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       mondayFrom: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       })
       ,
       mondayTo: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       tuesdayFrom: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       tuesdayTo: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       wednesdayFrom: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       wednesdayTo: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       thursdayFrom: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       thursdayTo: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       fridayFrom: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       fridayTo: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       saturdayFrom: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       saturdayTo: new FormControl(null, {
         updateOn: 'blur',
-        validators: [Validators.required]
+
       }),
       website: new FormControl(null, {
         updateOn: 'blur',

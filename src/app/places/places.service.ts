@@ -247,7 +247,32 @@ export class PlacesService {
       );
     }
 
-  updateOffer(placeId: string,title: string, description: string){
+  updateOffer(
+    placeId: string,
+    title: string,
+    description: string,
+    phoneNumber: number,
+    category: string,
+    address: string,
+    keyword1: string,
+    keyword2: string,
+    keyword3: string,
+    sundayFrom: string,
+    sundayTo: string,
+    mondayFrom: string,
+    mondayTo: string,
+    tuesdayFrom: string,
+    tuesdayTo: string,
+    wednesdayFrom: string,
+    wednesdayTo: string,
+    thursdayFrom: string,
+    thursdayTo: string,
+    fridayFrom: string,
+    fridayTo: string,
+    saturdayFrom: string,
+    saturdayTo: string,
+    website: string
+    ){
     let updatedPlaces: Place[];
     let fetchedToken: string;
     return this.authServicesitok.token.pipe(take(1), switchMap(token => {
@@ -270,12 +295,73 @@ export class PlacesService {
           oldPlace.id,
           title,
           description,
-          oldPlace.phoneNumber,
+          phoneNumber,
           oldPlace.imageUrl,
           oldPlace.userId,
           oldPlace.location,
           oldPlace.rate,
           oldPlace.numrating,
+          category,
+          keyword1,
+          keyword2,
+          keyword3,
+          sundayFrom,
+          sundayTo,
+          mondayFrom,
+          mondayTo,
+          tuesdayFrom,
+          tuesdayTo,
+          wednesdayFrom,
+          wednesdayTo,
+          thursdayFrom,
+          thursdayTo,
+          fridayFrom,
+          fridayTo,
+          saturdayFrom,
+          saturdayTo,
+          website,
+          address
+        );
+        return this.http.put(
+          `https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/offered-places/${placeId}.json?auth=${fetchedToken}`,
+          {...updatedPlaces[updatedPlaceIndex], id: null}
+        );}),
+      tap(() => {
+        this._places.next(updatedPlaces);
+      })
+    );
+  }
+
+
+  updateOfferRating(placeId: string, rate: number, numrating: number){
+    let updatedPlaces: Place[];
+    let fetchedToken: string;
+    return this.authServicesitok.token.pipe(take(1), switchMap(token => {
+      fetchedToken = token;
+      return this.places;
+    }),
+       take(1),
+       switchMap(places => {
+         if (!places || places.length <=0){
+           return this.fetchPlaces();
+         } else {
+           return of(places);
+         }
+      }),
+      switchMap(places => {
+        const updatedPlaceIndex = places.findIndex(ntah => ntah.id === placeId);
+        updatedPlaces = [...places];
+        const oldPlace = updatedPlaces[updatedPlaceIndex];
+        updatedPlaces[updatedPlaceIndex] = new Place(
+          oldPlace.id,
+          oldPlace.title,
+          oldPlace.description,
+          oldPlace.phoneNumber,
+          oldPlace.imageUrl,
+          oldPlace.userId,
+          oldPlace.location,
+          rate,
+          numrating,
           oldPlace.category,
           oldPlace.keyword1,
           oldPlace.keyword2,
@@ -304,6 +390,23 @@ export class PlacesService {
       tap(() => {
         this._places.next(updatedPlaces);
       })
+    );
+  }
+
+
+  cancelBooking(place: string){
+    return this.authServicesitok.token.pipe(take(1), switchMap(token => {
+      return this.http
+    .delete(`https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/offered-places/${place}.json?auth=${token}`)
+    }),
+    switchMap(()=>{
+        return this.places;
+      }),
+      take(1),
+      tap(wishlist => {
+          this._places.next(wishlist.filter(b => b.id !== place));
+        }
+      )
     );
   }
 

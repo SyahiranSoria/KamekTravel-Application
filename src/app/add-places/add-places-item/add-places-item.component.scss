@@ -1,9 +1,38 @@
-.thumbnail{
-  width: 35%;
-  height: auto;
-}
+// .thumbnail{
+//   width: 35%;
+//   height: auto;
+// }
+
+// .border{
+//   border-radius: 20px;
+//   border: 0.1px solid black;
+// }
+
+
 
 .border{
   border-radius: 20px;
-  border: 0.1px solid black;
 }
+
+.item ion-thumbnail {
+  min-width: 8rem;
+  min-height: 7rem;
+  img {
+      max-width: 5rem;
+      min-width: 5rem;
+  }
+}
+
+
+.item ion-chip {
+  min-width: 0.5rem;
+  min-height: 0.5rem;
+
+}
+
+.horizontal-scroll {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+

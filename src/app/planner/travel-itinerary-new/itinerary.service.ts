@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { WishlistItineray } from 'src/app/wishlist/wishlist.model';
@@ -21,6 +21,7 @@ interface ItineraryData{
   providedIn: 'root'
 })
 export class ItineraryService {
+
 
   private _itinerary = new BehaviorSubject<Itinerary[]>([]);
 
@@ -123,7 +124,7 @@ export class ItineraryService {
   cancelBooking(plannerId: string){
     return this.authServicePD.token.pipe(take(1), switchMap(token => {
       return this.httpsendiri
-    .delete(`https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/planner/${plannerId}.json?auth=${token}`)
+    .delete(`https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/itinerary/${plannerId}.json?auth=${token}`)
     }),
     switchMap(()=>{
         return this.itinerary;
@@ -139,7 +140,7 @@ export class ItineraryService {
   getItinerary(id: string) { //fetchPlaces is a method to show specific places from database to apps
     return this.authServicePD.token.pipe(take(1),switchMap(token => {
       return this.httpsendiri
-    .get<ItineraryData>(`https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/planner/${id}.json?auth=${token}`)
+    .get<ItineraryData>(`https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/itinerary/${id}.json?auth=${token}`)
     }),
       map(ItineraryData => {
         return new Itinerary(
@@ -154,4 +155,45 @@ export class ItineraryService {
       //   tap(resData => {console.log(resData);})
     );
   }
+
+  updateItinerary(id: string, ItineraryId: string, time: string, notes: string){
+    let updatedItinerary: Itinerary[];
+    let fetchedToken: string;
+    return this.authServicePD.token.pipe(take(1), switchMap(token => {
+      fetchedToken = token;
+      return this.itinerary;
+    }),
+       take(1),
+       switchMap(itinerary => {
+         if (!itinerary || itinerary.length <=0){
+           return this.fetchItinerary(id);
+         } else {
+           return of(itinerary);
+         }
+      }),
+      switchMap(itinerary => {
+        let id1 = 'McIlIyq9TO34sJ6TgqD';
+        let hello = 'hello';
+        const updatedItineraryIndex = itinerary.findIndex(ntah => ntah.id === ItineraryId);
+        updatedItinerary = [...itinerary];
+        const oldRate = updatedItinerary[updatedItineraryIndex];
+        updatedItinerary[updatedItineraryIndex] = new Itinerary(
+          oldRate.id,
+          time,
+          notes,
+          oldRate.itinerary,
+          oldRate.userId,
+          oldRate.plannerId
+        );
+        return this.httpsendiri.put(
+          `https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/itinerary/${ItineraryId}.json?auth=${fetchedToken}`,
+          {...updatedItinerary[updatedItineraryIndex], id: null}
+        );}),
+      tap(() => {
+        this._itinerary.next(updatedItinerary);
+      })
+    );
+  }
+
+
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { IonItemSliding, LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Planner } from './planner.model';
 import { PlannerService } from './planner.service';
@@ -45,6 +45,18 @@ export class PlannerPage implements OnInit {
     if(this.plannersubs){
       this.plannersubs.unsubscribe();
     }
+  }
+
+  onCancelBooking(bookingid: string, demisliding: IonItemSliding){
+    demisliding.close();
+    this.loaderCtrl.create({message: 'canceling...'}).then(loadingEl => {
+      loadingEl.present();
+
+    this.placesservicehere.cancelBooking(bookingid).subscribe(() => {
+      loadingEl.dismiss();
+      console.log('Delete');
+    });
+  });
   }
 
 }

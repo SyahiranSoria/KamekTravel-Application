@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
 import { star } from './star.model';
@@ -114,6 +114,42 @@ export class StarvoteService {
      }),
       tap(rating=> {
         this._star.next(rating);
+      })
+    );
+  }
+
+
+  updateCurrentVote(rateId:string, currentVote: number){
+    let updatedVote: star[];
+    let fetchedToken: string;
+    return this.authServicePD.token.pipe(take(1), switchMap(token => {
+      fetchedToken = token;
+      return this.star;
+    }),
+       take(1),
+       switchMap(rate => {
+         if (!rate || rate.length <=0){
+           return this.fetchRating();
+         } else {
+           return of(rate);
+         }
+      }),
+      switchMap(rate => {
+        const updatedRateIndex = rate.findIndex(ntah => ntah.id === rateId);
+        updatedVote = [...rate];
+        const oldRate = updatedVote[updatedRateIndex];
+        updatedVote[updatedRateIndex] = new star(
+          oldRate.id,
+          currentVote,
+          oldRate.placeId,
+          oldRate.userId
+        );
+        return this.httpsendiri.put(
+          `https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/starRating/${rateId}.json?auth=${fetchedToken}`,
+          {...updatedVote[updatedRateIndex], id: null}
+        );}),
+      tap(() => {
+        this._star.next(updatedVote);
       })
     );
   }

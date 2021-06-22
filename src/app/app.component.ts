@@ -77,15 +77,19 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   userid(){
-    let fetchedUserId1: string;
-    this.authSub = this.authserviceappcomp.userId.subscribe(userId => {
-      if (!userId){
-        throw new Error('No user id found!');
-      }
-      fetchedUserId1 = userId;
-      console.log('masok ka nisik');
+    this.authserviceappcomp.userId.pipe(take(1)).subscribe(userId => {
+
+    }
+
+    // let fetchedUserId1: string;
+    // this.authSub = this.authserviceappcomp.userId.subscribe(userId => {
+    //   if (!userId){
+    //     throw new Error('No user id found!');
+    //   }
+    //   fetchedUserId1 = userId;
+    //   console.log('masok ka nisik');
       //return this.authserviceappcomp.token;
-    });
+    )
 
   }
 

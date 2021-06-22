@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController, LoadingController, ModalController, NavController } from '@ionic/angular';
+import { AlertController, IonItemSliding, LoadingController, ModalController, NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -29,6 +29,10 @@ export class TravelItineraryNewPage implements OnInit, OnDestroy {
   releventItinerary: Itinerary[];
   private Itinerarysubs : Subscription;
   loadedwishlist: WishlistItineray[];
+  itinerararray : Itinerary;
+  showEdit = false;
+  changeWish = false;
+  holdId : string;
 
 
 
@@ -157,6 +161,79 @@ export class TravelItineraryNewPage implements OnInit, OnDestroy {
     console.log(itinerary,'aloha');
     console.log('sini');
   }
+
+  onCancelBooking(bookingid: string){
+    this.loadingCtrl.create({message: 'deleting...'}).then(loadingEl => {
+      loadingEl.present();
+    this.itineraryServiceDP.cancelBooking(bookingid).subscribe(() => {
+      loadingEl.dismiss();
+      console.log('Delete');
+    });
+  });
+  }
+
+  onEdit(id: string){
+    this.holdId = id;
+    this.changeWish = true;
+    this.Itinerarysubs = this.itineraryServiceDP
+      .getItinerary(id)
+      .subscribe(planner => {
+        this.itinerararray = planner;
+        this.formPD = new FormGroup({
+          time : new FormControl(this.itinerararray.time, {
+            updateOn: 'blur',
+            validators: [Validators.required]
+          }),
+          notes : new FormControl(this.itinerararray.notes, {
+            updateOn: 'blur',
+            validators: [Validators.required, Validators.maxLength(180)]
+          }),
+          itinerary: new FormControl(null, {
+            updateOn: 'blur',
+
+          })
+        });
+        this.isLoading = false;
+      }, error => {
+        this.alertCtrl.create({
+          header: 'An error occurred',
+          message: 'Place could not be fetch please try again later.',
+          buttons: [{text: 'Okay', handler: () => {
+
+          }}]
+        }).then(alertEl => {
+          alertEl.present();
+        })
+      });
+      this.showEdit = true;
+  }
+
+  saveEdit(){
+    if(!this.formPD.valid){
+      return;
+    }
+    this.loadingCtrl
+      .create({
+      message: 'Updating Place...'
+    }).then(loadingEl => {
+      loadingEl.present();
+      this.itineraryServiceDP
+        .updateItinerary(
+        this.PlaceDlmDetail.id,//placeId
+        this.holdId,//Itinerary Id
+        this.formPD.value.time,
+        this.formPD.value.notes
+      )
+      .subscribe(() => {
+        loadingEl.dismiss();
+        this.formPD.reset();
+        this.showEdit = false;
+        this.changeWish = false;
+      });
+    })
+  }
+
+
 
 }
 

@@ -13,6 +13,9 @@ import { StarvoteService } from 'src/app/star-rating/starvote.service';
 
 import { Place } from '../../place.model';
 import { PlacesService } from '../../places.service';
+import {Plugins} from '@capacitor/core';
+import { Capacitor } from '@capacitor/core';
+import { Browser } from '@capacitor/browser';
 
 
 @Component({
@@ -23,6 +26,7 @@ import { PlacesService } from '../../places.service';
 export class PlaceDetailPage implements OnInit, OnDestroy {
 
   PlaceDlmDetail : Place;
+  starRating: star;
   private placeSubSitok: Subscription;
   isLoading = false;
   isBookable = false;
@@ -40,8 +44,6 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
     private routeDP: ActivatedRoute,
     private PlacesServiceDP: PlacesService,
     private Modalcontrollerdlmtok : ModalController,
-    //private actionsheetctrlPD : ActionSheetController,
-    //private bookingService : BookingService,
     private loadingCtrl : LoadingController,
     private authServicePD : AuthService,
     private routersini : Router,
@@ -93,49 +95,6 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
     });
   }
 
-  //method 1
-  //onBookPlace(){
-    //this.routerPD.navigateByUrl('/places/tabs/discover');
-    //this.NavCtrlPD.navigateBack('/places/tabs/discover');
-  //   this.actionsheetctrlPD.create({
-  //     header: 'Choose an Action',
-  //     buttons: [
-  //       {
-  //         text: 'Select Date',
-  //         handler: ()=> {
-  //           this.openBookingModal('select');
-  //         }
-  //       },
-  //       {
-  //         text: 'Random Date',
-  //         handler: ()=> {
-  //           this.openBookingModal('random');
-  //         }
-  //       },
-  //       {
-  //         text: 'Cancel',
-  //         role: 'destructive'
-  //       }
-  //     ]
-  //   }).then(actionsheetElPD => {
-  //     actionsheetElPD.present();
-  //   });
-
-  // }
-
-  //method 2
-  // openRatePlace(){
-  //   this.Modalcontrollerdlmtok
-  //     .create({
-  //     component:StarRatingPage,
-  //     componentProps: {}})
-  //   .then(modalElpolah => {
-  //       modalElpolah.present();
-  //       return modalElpolah.onDidDismiss();
-  //     })
-
-  // }
-
   onShowFullMap(){
     this.Modalcontrollerdlmtok.create({component: MapModalComponent, componentProps: {
       center: { lat: this.PlaceDlmDetail.location.lat, lng: this.PlaceDlmDetail.location.lng},
@@ -162,6 +121,7 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
         }else{
           this.rating = this.loadedrating1[0].currentVote;
           //console.log(this.loadedrating1[0].placeId);
+          console.log(this.rating);
           console.log('menjadi');
         }
       console.log(this.a,'vote');
@@ -183,14 +143,64 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
       this.PlaceDlmDetail.id,
       starId.toString(),
       ).subscribe(() => {
-        console.log(this.loadedrating1.length,'test10');
-        console.log(this.PlaceDlmDetail.id,'test100');
+        let people = 1;
         this.loadedrating1 = this.loadedrating.filter(place => place.placeId == this.PlaceDlmDetail.id);
+        this.AverageStarFirst(starId);
       })
     }else{
-      //console.log(this.loadedrating1[0].placeId);
+      //update user rate
+      console.log(this.loadedrating1[0].placeId);
       console.log('menjadi');
+      this.AverageStar(starId);
+      console.log(this.loadedrating1[0].id,'cuba');
+      this.starservice
+        .updateCurrentVote(
+          this.loadedrating1[0].id,
+          starId
+      )
+      .subscribe(() => {
+
+      });
     }
+  }
+
+  AverageStarFirst(rate: number){
+    let people = 1;
+    let totalpeople = this.PlaceDlmDetail.numrating + people;
+    console.log('Number of People Rate: ', totalpeople );
+    let totalrate = this.PlaceDlmDetail.rate + rate;
+    let average = totalrate / totalpeople;
+    console.log('Average: ',average);
+
+    this.PlacesServiceDP
+        .updateOfferRating(
+        this.PlaceDlmDetail.id,
+        average,
+        totalpeople
+      )
+      .subscribe(() => {
+
+      });
+  }
+
+  AverageStar(rate: number){
+    let minusRating = this.rating;
+    let totalrate = this.PlaceDlmDetail.rate - minusRating;
+    let newrate = totalrate + rate;
+    let average = newrate / this.PlaceDlmDetail.numrating;
+    console.log('rating: ', newrate);
+    console.log('people: ',this.PlaceDlmDetail.numrating);
+    console.log('Average: ', average);
+
+    this.PlacesServiceDP
+        .updateOfferRating(
+        this.PlaceDlmDetail.id,
+        average,
+        this.PlaceDlmDetail.numrating
+      )
+      .subscribe(() => {
+
+      });
   }
 
 
@@ -202,5 +212,12 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
     if(this.placeSubSitok){
       this.placeSubSitok.unsubscribe();
     }
+  }
+
+  async openWebpage(url: string) {
+     //const url = 'http://capacitor.ionicframework.com/';
+     await Browser.open({'url': url});
+
+   // Inject scripts, css and more with browser.X
   }
 }

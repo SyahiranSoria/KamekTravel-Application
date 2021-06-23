@@ -61,7 +61,7 @@ export class TravelItineraryNewPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.routeDP.paramMap.subscribe(paramMap => {
       if (!paramMap.has('plannerId')) {
-        this.NavCtrlPD.navigateBack('/planner');//navigate back if no data
+        this.NavCtrlPD.navigateBack('/planner');
         return;
       }
       this.isLoading = true;
@@ -157,7 +157,6 @@ export class TravelItineraryNewPage implements OnInit, OnDestroy {
 
   onAddWishlist(itinerary: WishlistItineray){
     this.formPD.patchValue({itinerary: itinerary});
-    //to update our internal object to hold the location
     console.log(itinerary,'aloha');
     console.log('sini');
   }
@@ -219,8 +218,8 @@ export class TravelItineraryNewPage implements OnInit, OnDestroy {
       loadingEl.present();
       this.itineraryServiceDP
         .updateItinerary(
-        this.PlaceDlmDetail.id,//placeId
-        this.holdId,//Itinerary Id
+        this.PlaceDlmDetail.id,
+        this.holdId,
         this.formPD.value.time,
         this.formPD.value.notes
       )
@@ -236,42 +235,3 @@ export class TravelItineraryNewPage implements OnInit, OnDestroy {
 
 
 }
-
-// loadedwishlist: wishlist[];
-//   private bookingSub: Subscription;
-//   isLoading = false;
-
-//   constructor(
-//     private bookingsServicedlmtok: WishlistService,
-//     private loadingCtrl : LoadingController  ) { }
-
-//   ngOnInit() {
-//     this.bookingSub = this.bookingsServicedlmtok.wishlisttunjok.subscribe(bookings => {
-//       this.loadedwishlist = bookings;
-//     });
-//   }
-
-  // ionViewWillEnter(){
-  //   this.isLoading = true;
-  //   this.bookingsServicedlmtok.fetchwishlist().subscribe(()=> {
-  //     this.isLoading = false;
-  //   });
-  // }
-
-//   onCancelBooking(bookingid: string, demisliding: IonItemSliding){
-//     demisliding.close();
-//     this.loadingCtrl.create({message: 'canceling...'}).then(loadingEl => {
-//       loadingEl.present();
-
-//     this.bookingsServicedlmtok.cancelBooking(bookingid).subscribe(() => {
-//       loadingEl.dismiss();
-//       console.log('Delete');
-//     });
-//   });
-//   }
-
-//   ngOnDestroy(){
-//     if(this.bookingSub){
-//       this.bookingSub.unsubscribe();
-//     }
-//   }

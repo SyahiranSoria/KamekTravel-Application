@@ -22,7 +22,7 @@ export class ExplorePage implements OnInit {
   @Input() center = { lat: 1.577353, lng: 110.298113};
   googleMaps: any;
 
-  tunjokPlaces: Place[];//need to be import from place.model file
+  tunjokPlaces: Place[];
   isLoading = false;
   private placesSubSitok : Subscription;
   releventPlaces: Place[];
@@ -56,7 +56,7 @@ export class ExplorePage implements OnInit {
       const coordinates: Coordinates = {
         lat: geoPosition.coords.latitude,
         lng: geoPosition.coords.longitude
-      }; //import from location.model file
+      };
       this.isLoading = false;
       console.log(coordinates,'siapa dlok');
       this.lat = coordinates.lat;
@@ -226,7 +226,7 @@ toRad(x){
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src =
-        'https://maps.googleapis.com/maps/api/js?key=' + environment.googleMapsAPIKeyPolah;//refer environment pun file
+        'https://maps.googleapis.com/maps/api/js?key=' + environment.googleMapsAPIKeyPolah;
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);

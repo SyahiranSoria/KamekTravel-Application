@@ -56,8 +56,8 @@ export class MapModalComponent implements OnInit, AfterViewInit, OnDestroy {
             console.log(selectedCoords, 'hello');
           });
         } else {
-          const marker = new googleMaps.Marker({//tok penting untuk carik cara polah navigation. tok hanya show on map
-            position: this.center, //center ekot lat lng dlm place id
+          const marker = new googleMaps.Marker({
+            position: this.center,
             map : map,
             title: 'Picked Location'
           });
@@ -123,14 +123,13 @@ export class MapModalComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   //a
-  applyHaversine(locations, usersLocation){//locations refer to location POI
+  applyHaversine(locations, usersLocation){
 
         let locationdistance = this.getDistanceBetweenPoints(
             usersLocation,
             locations,
             'km'
         ).toFixed(2);
-        //console.log(locationdistance, 'hai');
         this.show = true;
         this.distance = locationdistance;
 
@@ -197,7 +196,7 @@ toRad(x){
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src =
-        'https://maps.googleapis.com/maps/api/js?key=' + environment.googleMapsAPIKeyPolah;//refer environment pun file
+        'https://maps.googleapis.com/maps/api/js?key=' + environment.googleMapsAPIKeyPolah;
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);

@@ -144,7 +144,6 @@ export class NewPlacesPage implements OnInit {
 
   onLocationPicked(location: PlaceLocation){
     this.formPD.patchValue({location: location});
-    //to update our internal object to hold the location
     console.log(location);
     console.log('sini');
   }
@@ -183,7 +182,7 @@ export class NewPlacesPage implements OnInit {
           return this.placesservicehere.addPlace(
             this.formPD.value.title,
             this.formPD.value.description,
-            +this.formPD.value.phoneNum,//add + because it is a number
+            +this.formPD.value.phoneNum,
             +this.rate,
             +this.numrating,
             this.formPD.value.category,

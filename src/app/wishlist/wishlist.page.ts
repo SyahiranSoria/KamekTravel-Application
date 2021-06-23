@@ -11,7 +11,7 @@ import { WishlistService } from './wishlist.service';
 })
 export class WishlistPage implements OnInit {
 
-  loadedwishlist: wishlist[];//tok loaded array booking ya
+  loadedwishlist: wishlist[];
   private bookingSub: Subscription;
   isLoading = false;
 
@@ -23,7 +23,7 @@ export class WishlistPage implements OnInit {
     this.bookingSub = this.bookingsServicedlmtok.wishlisttunjok.subscribe(bookings => {
       this.loadedwishlist = bookings;
       console.log(this.loadedwishlist);
-    });//tok loaded contoh dari array booking ya
+    });
   }
 
   ionViewWillEnter(){

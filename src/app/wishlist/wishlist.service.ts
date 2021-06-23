@@ -61,7 +61,7 @@ export class WishlistService {
     }),
 
     switchMap(resData => {
-      generatedId = resData.name;//see line 48
+      generatedId = resData.name;
       return this.wishlisttunjok;
     }),
     take(1),
@@ -129,7 +129,7 @@ export class WishlistService {
       );
     }
 
-    getWishlist(id: string) { //fetchPlaces is a method to show specific places from database to apps
+    getWishlist(id: string) {
       return this.authServicePD.token.pipe(take(1),switchMap(token => {
         return this.httpsendiri
       .get<wishlistData>(`https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/wishlist/${id}.json?auth=${token}`)
@@ -144,7 +144,7 @@ export class WishlistService {
             placeData.placeImage
           );
         })
-        //   tap(resData => {console.log(resData);})
+
       );
     }
 }

@@ -47,14 +47,14 @@ export class PlacesService {
 
   get places(){
     return this._places.asObservable();
-    //return [...this._places];tok dapatkan array semua kita perlukan so nya berbeza dgn getplace
+    //return [...this._places];
   }
 
   constructor(
     private authServicesitok : AuthService,
     private http: HttpClient) { }
 
-  fetchPlaces(){ //fetchPlaces is a method to show all places from database to apps
+  fetchPlaces(){
     return this.authServicesitok.token.pipe(take(1),switchMap(token => {
       return this.http.get<{[key: string]: PlaceData }>(`https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/offered-places.json?auth=${token}`)
     }),
@@ -105,7 +105,7 @@ export class PlacesService {
     );
   }
 
-  getPlace(id: string) { //fetchPlaces is a method to show specific places from database to apps
+  getPlace(id: string) {
     return this.authServicesitok.token.pipe(take(1),switchMap(token => {
       return this.http
     .get<PlaceData>(`https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/offered-places/${id}.json?auth=${token}`)
@@ -143,9 +143,9 @@ export class PlacesService {
           placeData.address
           );
       })
-      //   tap(resData => {console.log(resData);})
+
     );
-  }//untuk dptkan single id of array
+  }
 
   uploadImage(image: File){
     const uploadData = new FormData();
@@ -242,7 +242,7 @@ export class PlacesService {
         tap(places=> {
           newPlace.id = generatedId;
           this._places.next(places.concat(newPlace));
-          //this.places.push(newPlace); concat meaning- return new array without change hardcoded array
+
         })
       );
     }
@@ -251,9 +251,9 @@ export class PlacesService {
     placeId: string,
     title: string,
     description: string,
-    phoneNumber: number,
-    category: string,
+    phoneNum: number,
     address: string,
+    category: string,
     keyword1: string,
     keyword2: string,
     keyword3: string,
@@ -295,7 +295,7 @@ export class PlacesService {
           oldPlace.id,
           title,
           description,
-          phoneNumber,
+          phoneNum,
           oldPlace.imageUrl,
           oldPlace.userId,
           oldPlace.location,

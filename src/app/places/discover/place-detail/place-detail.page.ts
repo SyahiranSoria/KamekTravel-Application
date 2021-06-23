@@ -59,7 +59,7 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
     });
     this.routeDP.paramMap.subscribe(paramMap => {
       if (!paramMap.has('placeId')) {
-        this.NavCtrlPD.navigateBack('/places/tabs/discover');//navigate back if no data
+        this.NavCtrlPD.navigateBack('/places/tabs/discover');
         return;
       }
       this.isLoading = true;
@@ -120,7 +120,6 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
         return ;
         }else{
           this.rating = this.loadedrating1[0].currentVote;
-          //console.log(this.loadedrating1[0].placeId);
           console.log(this.rating);
           console.log('menjadi');
         }
@@ -148,11 +147,10 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
         this.AverageStarFirst(starId);
       })
     }else{
-      //update user rate
-      console.log(this.loadedrating1[0].placeId);
-      console.log('menjadi');
+      // console.log(this.loadedrating1[0].placeId);
+      // console.log('test');
       this.AverageStar(starId);
-      console.log(this.loadedrating1[0].id,'cuba');
+      //console.log(this.loadedrating1[0].id,'cuba');
       this.starservice
         .updateCurrentVote(
           this.loadedrating1[0].id,

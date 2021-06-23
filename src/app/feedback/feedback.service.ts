@@ -116,7 +116,6 @@ export class FeedbackService {
       tap(places=> {
         newFeedback.feedback_id = generatedId;
         this._feedback.next(places.concat(newFeedback));
-        //this.places.push(newPlace); concat meaning- return new array without change hardcoded array
       })
     );
   }

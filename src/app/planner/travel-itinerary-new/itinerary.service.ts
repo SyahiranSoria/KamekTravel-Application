@@ -137,7 +137,7 @@ export class ItineraryService {
     );
   }
 
-  getItinerary(id: string) { //fetchPlaces is a method to show specific places from database to apps
+  getItinerary(id: string) {
     return this.authServicePD.token.pipe(take(1),switchMap(token => {
       return this.httpsendiri
     .get<ItineraryData>(`https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/itinerary/${id}.json?auth=${token}`)

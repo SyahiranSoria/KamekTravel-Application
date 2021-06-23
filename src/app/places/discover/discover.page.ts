@@ -16,7 +16,7 @@ import { take } from 'rxjs/operators';
 })
 
 export class DiscoverPage implements OnInit, OnDestroy {
-  tunjokPlaces: Place[];//need to be import from place.model file
+  tunjokPlaces: Place[];
   listedLoadedPlace: Place[];
   releventPlaces: Place[];
   isLoading = false;
@@ -31,7 +31,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
   constructor(
     private placesServicePD: PlacesService,
     private MenuCtrlDiscoverPage : MenuController,
-    private authServicePD: AuthService){}//placesServicePD PD=polah dikpun, perlu import
+    private authServicePD: AuthService){}
 
   ngOnInit() {
     this.placesSubSitok = this.placesServicePD.places.subscribe(places => {
@@ -67,7 +67,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
         this.Keyword = false;
         this.releventPlaces = this.tunjokPlaces.filter(place =>  place.rate >= 3.5 );
         this.listedLoadedPlace = this.releventPlaces.slice(1);
-        console.log(this.listedLoadedPlace,'helo');
+        //console.log(this.listedLoadedPlace,'test');
       } else {
         this.Keyword = true;
         this.show = true;

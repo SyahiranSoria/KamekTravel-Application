@@ -28,11 +28,11 @@ export class EditPlacesPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.routeEditOfferpage.paramMap.subscribe(paramMap => {
-      if (!paramMap.has('placeId')) {//why placeId?? sebab sama nama dlm offers-routing.module.ts
-        this.NavCtrlEditOfferPage.navigateBack('/add-places');//navigate back if no data
+      if (!paramMap.has('placeId')) {
+        this.NavCtrlEditOfferPage.navigateBack('/add-places');
         return;
       }
-      this.placeId = paramMap.get('placeId'); //not so sure how this works see tutorial 207. 6:40
+      this.placeId = paramMap.get('placeId');
       this.isLoading = true;
       this.placesSubSitok = this.PlacesServiceEditOfferPage
       .getPlace(paramMap.get('placeId'))
@@ -161,7 +161,7 @@ export class EditPlacesPage implements OnInit, OnDestroy {
         this.Placearray.id,
         this.editform.value.title,
         this.editform.value.description,
-        this.editform.value.phoneNumber,
+        +this.editform.value.phoneNum,
         this.editform.value.address,
         this.editform.value.category,
         this.editform.value.keyword1,

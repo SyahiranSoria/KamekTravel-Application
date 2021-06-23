@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'tabs',
-    component: PlacesPage, //same as places.page.ts
+    component: PlacesPage,
     children: [
       {
         path: 'discover',

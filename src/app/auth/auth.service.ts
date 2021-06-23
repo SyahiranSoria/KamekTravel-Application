@@ -31,7 +31,7 @@ export class AuthService implements OnDestroy {
       } else {
         return false;
       }
-    }));//!! meaning force the token to change to boolean
+    }));
   }
 
   get userId(){

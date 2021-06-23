@@ -27,13 +27,13 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid *ngIf="!isLoading && releventPlanner.length > 0"> <!--show when releventplaces more then 0-->
+  <ion-grid *ngIf="!isLoading && releventPlanner.length > 0">
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
 
         <ion-list>
           <ion-item-sliding *ngFor="let planner of releventPlanner" #demisliding>
-          <ion-item [routerLink]="[planner.id]" detail><!--Other way of delcaring path for routing-->
+          <ion-item [routerLink]="[planner.id]" detail>
             <ion-label>
               <h2>{{ planner.title }}</h2>
               <p>{{ planner.description }}</p>
@@ -41,7 +41,7 @@
             </ion-label>
           </ion-item>
           <ion-item-options>
-            <ion-item-option color="danger" (click)="onCancelBooking(planner.id, demisliding)"><!-- Cara guna click listener-->
+            <ion-item-option color="danger" (click)="onCancelBooking(planner.id, demisliding)">
               <ion-icon name="trash" slot="icon-only"></ion-icon>
             </ion-item-option>
           </ion-item-options>

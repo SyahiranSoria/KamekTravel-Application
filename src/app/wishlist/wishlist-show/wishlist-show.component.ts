@@ -19,29 +19,15 @@ export class WishlistShowComponent implements OnInit {
   @Input() showPreview = false;
 
   PlaceDlmDetail : Planner;
-  // private placeSubSitok: Subscription;
+
    isLoading = false;
    showButton = false;
-  // formPD: FormGroup;
-  // loadedItinerary: Itinerary[];
-  // releventItinerary: Itinerary[];
-  // private Itinerarysubs : Subscription;
+
 
   constructor(
-    // private NavCtrlPD: NavController,
-    // private routeDP: ActivatedRoute,
-    // private PlacesServiceDP: PlannerService,
-    // private itineraryServiceDP: ItineraryService,
+
     private Modalcontrollerdlmtok : ModalController,
-    // private actionsheetctrlPD : ActionSheetController,
-    // private bookingService : BookingService,
-    // private loadingCtrl : LoadingController,
-    // private authServicePD : AuthService,
-    // private routersini : Router,
-    // private alertCtrl : AlertController,
-    // private Itineraryservicehere: ItineraryService,
-    // private router: Router,
-    // private loaderCtrl: LoadingController
+
   ) { }
 
   ngOnInit() {}
@@ -71,27 +57,12 @@ export class WishlistShowComponent implements OnInit {
           this.selecteddesc = wishlist.description;
           this.selectedTitle = wishlist.placeTitle;
 
-          // this.createItinerary(wishlist.placeId,
-          //   wishlist.description,wishlist.placeTitle,
-          //   wishlist.placeImage)
-          // this.selectedWishlist = wishlist.placeImage;
+
            this.wishlistPick.emit(wishlist);
            console.log(wishlist.description);
         });
 
       });
   }
-
-  // private createItinerary(placeId: string,
-  //   description: string, placeTitle:string,
-  //   placeImage: string){
-  //       const wishlistPicked: WishlistItineray ={
-  //         placeId: placeId,
-  //         description: description,
-  //         placeTitle: placeTitle,
-  //         placeImage: placeImage,
-  //       };
-  //       console.log(wishlistPicked);
-  //   }
 
 }

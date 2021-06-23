@@ -13,14 +13,11 @@ import { WishlistService } from '../wishlist.service';
 export class WishlistPickerComponent implements OnInit, OnDestroy {
 
   @Input() tunjokwishlist: wishlist;
-  // @Input() selectedMode: 'select' | 'random';
-  // @ViewChild('localrefbook', {static: true}) form: NgForm;
-  // startDate: string;
-  // endDate: string;
+
 
   PlaceDlmWishlist : wishlist;
 
-  loadedwishlist: wishlist[];//tok loaded array booking ya
+  loadedwishlist: wishlist[];
   private bookingSub: Subscription;
   isLoading = false;
 
@@ -35,11 +32,9 @@ export class WishlistPickerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.bookingSub = this.bookingsServicedlmtok.wishlisttunjok.subscribe(bookings => {
       this.loadedwishlist = bookings;
-    });//tok loaded contoh dari array booking ya
+    });
 
-    // this.bookingSub = this.bookingsServicedlmtok.getWishlist(id).subscribe(wish => {
-    //   this.PlaceDlmWishlist = wish;
-    // });
+
   }
 
   onCancel(){
@@ -66,19 +61,10 @@ export class WishlistPickerComponent implements OnInit, OnDestroy {
       id3,
       id4
     };
-    //console.log(wishId.id4, 'sitok');
+
     this.modalCtrl2.dismiss(wishId);
   }
 
-  // onAddtoWislist(){
-  //   this.wishlist.addwishlist(
-  //     this.PlaceDlmDetail.id,
-  //     this.PlaceDlmDetail.title,
-  //     this.PlaceDlmDetail.description,
-  //     this.PlaceDlmDetail.imageUrl,
-  //     ).subscribe(() => {
-  //     })
-  // }
 
 
 }

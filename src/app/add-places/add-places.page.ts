@@ -11,7 +11,7 @@ import { PlacesService } from '../places/places.service';
   styleUrls: ['./add-places.page.scss'],
 })
 export class AddPlacesPage implements OnInit, OnDestroy{
- offersPD: Place[];//places ya dari place.model.ts file
+ offersPD: Place[];
  isLoading = false;
  private placesSub: Subscription;
 
@@ -22,7 +22,6 @@ export class AddPlacesPage implements OnInit, OnDestroy{
     this.placesSub = this.placesServicePD.places.subscribe(places => {
       this.offersPD = places;
     });
-    //this.offersPD = this.placesServicePD.places;
   }
 
   ionViewWillEnter(){
@@ -34,7 +33,7 @@ export class AddPlacesPage implements OnInit, OnDestroy{
 
   onEdit(offerIdPD: string, slidimgItem: IonItemSliding){
     slidimgItem.close();
-    this.routerdlmtok.navigate(['/', 'add-places', offerIdPD]) // tok cara routing dlm typescript file mun bukan dekat html file. contoh lain semua pake html file tp tok guna dari typescript file. melalui click() method
+    this.routerdlmtok.navigate(['/', 'add-places', offerIdPD])
     console.log('editing Item', offerIdPD);
   }
 

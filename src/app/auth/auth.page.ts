@@ -12,7 +12,7 @@ import { AuthResponseDataSini, AuthService } from './auth.service';
   styleUrls: ['./auth.page.scss'],
 })
 export class AuthPage implements OnInit {
-  isLoadingSpinner = false;//mesti false supaya sik loading
+  isLoadingSpinner = false;
   isLogin = true;
 
   constructor(
@@ -35,7 +35,6 @@ export class AuthPage implements OnInit {
       let authObs: Observable<AuthResponseDataSini>;
       if(this.isLogin){
         authObs = this.authServicedlmtok.login(email, password);
-        //this.id.fetchwishlist(email);
       } else {
         authObs = this.authServicedlmtok.signup(email, password);
       }

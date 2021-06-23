@@ -17,10 +17,6 @@ const routes: Routes = [
     loadChildren: () => import('./places/places.module').then( m => m.PlacesPageModule) , canLoad: [AuthGuard],
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule), canLoad: [AuthGuard],
-  },
-  {
     path: 'wishlist',
     loadChildren: () => import('./wishlist/wishlist.module').then( m => m.WishlistPageModule), canLoad: [AuthGuard],
   },

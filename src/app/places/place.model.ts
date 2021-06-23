@@ -32,5 +32,5 @@ export class Place{
     public saturdayTo: string,
     public website: string,
     public address: string
-    ){}//semua tok hnya access nya pun property tp sekda apa2 info. semua info dlm places.service.ts
+    ){}//for accessing property
 }

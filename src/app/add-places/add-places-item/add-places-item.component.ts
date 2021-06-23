@@ -7,8 +7,7 @@ import { Place } from 'src/app/places/place.model';
   styleUrls: ['./add-places-item.component.scss'],
 })
 export class AddPlacesItemComponent implements OnInit {
-  @Input() offerkeluar: Place; //Decorator that marks a class field as an input property and supplies configuration metadata. The input property is bound to a DOM property in the template. During change detection, Angular automatically updates the data property with the DOM property's value.
-
+  @Input() offerkeluar: Place;
   constructor() { }
 
   ngOnInit() {}

@@ -83,8 +83,7 @@
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
         <ion-list>
           <ion-item *ngFor="let placeKamek of releventPlaces.slice(1)"
-            [routerLink]="[placeKamek.id]" detail
-          ><!--Other way of delcaring path for routing-->
+            [routerLink]="[placeKamek.id]" detail>
             <ion-thumbnail slot="start" class="thumbnail">
               <ion-img [src] = "placeKamek.imageUrl" class="border"></ion-img>
             </ion-thumbnail>

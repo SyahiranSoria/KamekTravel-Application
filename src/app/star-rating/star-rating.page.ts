@@ -63,15 +63,6 @@ export class StarRatingPage {
     this.Modalcontrollerdlmtok.dismiss();
   }
 
-  // ionViewWillEnter(){
-  //   this.isLoading = true;
-  //   this.starservice.fetchRating().subscribe(()=>
-  //   {
-  //     console.log('hello');
-  //     this.isLoading = false;
-  //   });
-  // }
-
   enter(i) {
     this.hoverState = i;
   }

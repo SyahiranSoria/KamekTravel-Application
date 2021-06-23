@@ -55,7 +55,7 @@ export class StarvoteService {
     }),
 
     switchMap(resData => {
-      generatedId = resData.name;//see line 48
+      generatedId = resData.name;
       return this.star;
     }),
     take(1),
@@ -66,7 +66,7 @@ export class StarvoteService {
     );
   }
 
-  getRating(id: string) { //fetchPlaces is a method to show specific places from database to apps
+  getRating(id: string) {
     return this.authServicePD.token.pipe(take(1),switchMap(token => {
       return this.httpsendiri
     .get<ratingData>(`https://kamektravel-default-rtdb.asia-southeast1.firebasedatabase.app/starRating/${id}.json?auth=${token}`)
@@ -79,7 +79,7 @@ export class StarvoteService {
           placeData.currentVote
         );
       })
-      //   tap(resData => {console.log(resData);})
+
     );
   }
 
